@@ -51,4 +51,16 @@ export const resolvers = {
 			return games.findGameByReviewId(parent.id);
 		},
 	},
+	// all data comes from args
+	Mutation: {
+		deleteGame(_, args) {
+			return games.deleteGame(args.id);
+		},
+		addGame(_, args) {
+			return games.addGame(args.game);
+		},
+		updateGame(_, args) {
+			return games.updateGame(args.id, args.edits);
+		},
+	},
 };
