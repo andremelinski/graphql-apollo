@@ -1,0 +1,23 @@
+mutation AddMutation($game: AddGameInput!){
+  addGame(game: $game) {
+    id,
+    title,
+    platform
+  }
+}
+
+mutation UpdateMutation($id: ID!,$edits: EditGameInput!){
+  updateGame(id: $id, edits: $edits) {
+    id,
+    title,
+    platform
+  }
+}
+
+mutation DeleteMutation($id: ID!){
+  deleteGame(id: $id){
+    id,
+    title
+  } 
+    
+  }
