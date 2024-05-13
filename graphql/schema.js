@@ -6,18 +6,22 @@ export const typeDefs = `#graphql
     id: ID!
     title: String!
     platform: [String!]!
+    reviews: [Review!]
   }
   type Review {
     id: ID!
     rating: Int!
     content: String!
+    author: Author!
+    game: Game!
   }
   type Author {
     id: ID!
     name: String!
     verified: Boolean!
+    reviews: [Review!]
   }
-# The "Query" type is special: it lists all of the available queries that
+# The "Query" type is special: it lists all of the available queries thatpair inquerity
 # clients can execute, along with the return type for each. In this
 # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {

@@ -27,4 +27,28 @@ export const resolvers = {
 			return reviews.findById(args.id);
 		},
 	},
+	// adding relations
+	// how to get the reviews from A game? relation: 1 game to many reviews.
+	// when we select games or game
+	// for this apollo will query to get that single game query game info than query the reviews to get all reviews info
+	Game: {
+		// tells apolo how to get reviews info based on pair inquerity for the single Game.
+		reviews(parent) {
+			return reviews.findReviewsByGameId(parent.id);
+		},
+	},
+	Author: {
+		reviews(parent) {
+			return reviews.findReviewsByAuthorId(parent.id);
+		},
+	},
+	Review: {
+		author(parent) {
+			console.log(parent.id);
+			return authors.findAuthorByReviewId(parent.id);
+		},
+		game(parent) {
+			return games.findGameByReviewId(parent.id);
+		},
+	},
 };

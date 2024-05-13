@@ -1,4 +1,4 @@
-import db from './_db.js';
+import db from '../model/database/_db.js';
 
 export default class AuthorsService {
 	// private readonly dbConnection
@@ -10,5 +10,10 @@ export default class AuthorsService {
 
 	findById(id) {
 		return db.authors.find((el) => el.id === id);
+	}
+
+	findAuthorByReviewId(reviewId) {
+		const reviewInfo = db.reviews.find((el) => el.id === reviewId);
+		return db.authors.find((el) => el.id === reviewInfo.author_id);
 	}
 }
